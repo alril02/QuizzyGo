@@ -8,24 +8,21 @@ const routes = [
       { path: 'messager', component: () => import('pages/MessagerPage.vue') },
       { path: 'statistic', component: () => import('pages/StatisticPage.vue') },
       { path: 'calendar', component: () => import('pages/CalendarPage.vue') },
-      { path: 'finance', component: () => import('pages/FinancePage.vue') }
-    ]
+      { path: 'finance', component: () => import('pages/FinancePage.vue') },
+    ],
+  },
+  {
+    path: '/auth',
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [{ path: 'login', component: () => import('pages/auth/LoginPage.vue') }],
   },
 
-  {
-    path: '/login',
-    componen: () =>import('layouts/LoginLayout.vue'),
-    children: [
-      {path: '', component: () => import('pages/login/LoginPage.vue')}
-      ]
-    
-  },
   // Always leave this as last one,
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue')
-  }
+    component: () => import('pages/ErrorNotFound.vue'),
+  },
 ]
 
 export default routes

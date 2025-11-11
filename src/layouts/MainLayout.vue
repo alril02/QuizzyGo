@@ -1,9 +1,8 @@
 <template>
-  <q-layout
-    class="flex bg-gradient-to-br from-blue-500/50 to-amber-500/20 border border-gray-500 rounded-2xl overflow-hidden shadow-2xl">
+  <q-layout class="flex bg-gradient-to-br from-blue-500/50 to-amber-500/20 border border-gray-500">
     <!-- Sidebar -->
- <side-bar />
-<!-- Content -->
+    <SideBar />
+    <!-- Content -->
     <div class="flex-1" id="content">
       <!-- Header -->
       <header class="flex justify-between p-1">
@@ -13,7 +12,7 @@
           <button class="size-6 bg-amber-700 rounded-full"></button>
           <div class="flex gap-2">
             <button class="size-6 bg-amber-700 rounded-full"></button>
-            <span class="font-bold text-sm">puput</span>
+            <span class="font-bold text-sm">Ferren</span>
           </div>
         </div>
       </header>
@@ -26,5 +25,7 @@
 
 </template>
 <script setup>
-import SideBar from "components/SideBar.vue"
+import SideBar from 'src/components/SideBar.vue'
+
+
 </script>

@@ -1,6 +1,5 @@
 <template>
-<div>
-<h1>Halaman Squad</h1>
-</div>
+  <div>
+    <h1>Squad Page</h1>
+  </div>
 </template>
-<script setup></script>

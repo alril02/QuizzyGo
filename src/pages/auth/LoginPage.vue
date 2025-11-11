@@ -1,7 +1,6 @@
 <template>
-  <q-page padding>
+  <q-page class="bg-sky-400">
     <!-- content -->
-    <h1>Statistic Page</h1>
   </q-page>
 </template>
 

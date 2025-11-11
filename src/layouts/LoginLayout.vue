@@ -9,3 +9,6 @@
   </q-layout>
 </template>
 
+<script setup>
+
+</script>

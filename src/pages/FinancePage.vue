@@ -1,6 +1,10 @@
 <template>
-<div>
-<h1>Halaman Finance</h1>
-</div>
+  <q-page padding>
+    <!-- content -->
+    <h1>Finance Page</h1>
+  </q-page>
 </template>
-<script setup></script>
+
+<script setup>
+//
+</script>
