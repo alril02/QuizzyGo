@@ -1,27 +1,88 @@
+import LoginLayout from '../layouts/LoginLayout.vue'
+import MainLayout from '../layouts/MainLayout.vue'
+
 const routes = [
+  // DEFAULT
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/DashboardPage.vue') },
-      { path: 'squad', component: () => import('pages/SquadPage.vue') },
-      { path: 'messager', component: () => import('pages/MessagerPage.vue') },
-      { path: 'statistic', component: () => import('pages/StatisticPage.vue') },
-      { path: 'calendar', component: () => import('pages/CalendarPage.vue') },
-      { path: 'finance', component: () => import('pages/FinancePage.vue') },
-    ],
-  },
-  {
-    path: '/auth',
-    component: () => import('layouts/LoginLayout.vue'),
-    children: [{ path: 'login', component: () => import('pages/auth/LoginPage.vue') }],
+    redirect: '/login',
   },
 
-  // Always leave this as last one,
-  // but you can also remove it
+  // ================= AUTH =================
+  {
+    path: '/',
+    component: LoginLayout,
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import('../pages/auth/LoginPage.vue'),
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('../pages/auth/RegisterPage.vue'),
+      },
+      {
+        path: 'welcome',
+        name: 'welcome',
+        component: () => import('../pages/WelcomePage.vue'),
+      },
+    ],
+  },
+
+  // ================= MAIN APP =================
+  {
+    path: '/',
+    component: MainLayout,
+    children: [
+      {
+        path: 'app',
+        name: 'home',
+        component: () => import('../pages/DashboardPage.vue'),
+      },
+
+      // 🔹 QUIZ LIST
+      {
+        path: 'quiz',
+        name: 'quiz-list',
+        component: () => import('../pages/QuizListPage.vue'),
+        meta: { requiresAuth: true },
+      },
+
+      // 🔹 QUIZ DETAIL (INI KUNCI)
+      {
+        path: 'quiz/:id',
+        name: 'quiz-detail',
+        component: () => import('../pages/QuizDetailPage.vue'),
+        meta: { requiresAuth: false }, // 🔥 INI KUNCI
+      },
+
+      {
+        path: 'leaderboard',
+        name: 'leaderboard',
+        component: () => import('../pages/LeaderboardPage.vue'),
+      },
+
+      {
+        path: 'profile',
+        name: 'profile',
+        component: () => import('../pages/ProfilePage.vue'),
+      },
+
+      {
+        path: 'create-quiz',
+        name: 'create-quiz',
+        component: () => import('../pages/CreateQuizPage.vue'),
+        meta: { requiresAuth: true },
+      },
+    ],
+  },
+
+  // ================= FALLBACK =================
   {
     path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue'),
+    redirect: '/login',
   },
 ]
 
